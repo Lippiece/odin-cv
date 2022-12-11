@@ -1,62 +1,25 @@
 import "./css/App.css";
 
-import { useState } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import {
+  createTheme, ThemeProvider,
+} from "@mui/material/styles";
 
-const App = () => {
+import Summary from "./components/Summary/Summary.jsx";
 
-  const [
-    count,
-    setCount,
-  ] = useState( 0 );
+const darkTheme = createTheme( { palette: { mode: "dark" } } );
 
-  return (
-    <div
-      className="App">
-      <div>
-        <a
-          href="https://vitejs.dev"
-          rel="noreferrer"
-          target="_blank">
-          <img
-            alt="Vite logo"
-            className="logo"
-            src="/vite.svg" />
-        </a>
-        <a
-          href="https://reactjs.org"
-          rel="noreferrer"
-          target="_blank" />
-      </div>
-      <h1>
-        Vite + React
-      </h1>
-      <div
-        className="card">
-        <button
-          onClick={() =>
-            setCount( count =>
-              count + 1 )}>
-          count is
-          {" "}
-          {count}
-        </button>
-        <p>
-          Edit
-          {" "}
-          <code>
-            src/App.jsx
-          </code>
-          {" "}
-          and save to test HMR
-        </p>
-      </div>
-      <p
-        className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+const App = () =>
+  (
+    <ThemeProvider
+      theme={ darkTheme }>
+      <CssBaseline />
+      <Summary />
+      {/* <Experience /> */}
+      {/* <Education /> */}
+      {/* <Skills /> */}
+      {/* <Interests /> */}
+    </ThemeProvider>
   );
-
-};
 
 export default App;
