@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 
+import CustomInput from "./CustomInput";
+
 const Summary = () => {
 
   // initially, this is the form that has to be filled out
@@ -20,7 +22,7 @@ const Summary = () => {
     website : "",
   } );
   return (
-    <div
+    <section
       className="summary">
       <h1>
         Summary
@@ -31,22 +33,21 @@ const Summary = () => {
             (
               <TextField
                 id={ key }
+                key={ key }
                 label={ key }
-                onChange={ e => {
-
+                onChange={ event =>
                   setSummary( {
                     ...summary,
-                    [ key ]: e.target.value,
-                  } );
-
-                } }
+                    [ key ]: event.target.value,
+                  } ) }
                 value={ summary[ key ] }
                 variant="outlined"
               />
             ) ) }
-        <CustomInput
-          setSummary={ setSummary }
-        />
+        {/* <CustomInput
+          setSummary = { setSummary }
+          summary    = { summary }
+        /> */}
         <Button
           onClick={ () =>
             console.log( summary ) }
@@ -55,7 +56,7 @@ const Summary = () => {
         </Button>
 
       </form>
-    </div>
+    </section>
   );
 
 };

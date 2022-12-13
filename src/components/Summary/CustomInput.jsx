@@ -1,17 +1,43 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import {
+  useEffect, useState,
+} from "react";
 
-const CustomInput = ( { setSummary } ) => {
+const CustomInput = ( {
+  summary,
+  setSummary,
+} ) => {
 
   const [
     customInput,
     setCustomInput,
-  ] = useState( "" );
+  ] = useState( {
+    name : "",
+    value: "",
+  } );
   const [
     active,
     setActive,
-  ]             = useState( false );
+  ] = useState( false );
+
+  // on custom input change, add it to the summary object
+  useEffect(
+    () => {
+
+      if ( customInput.name !== "" && customInput.value !== "" ) {
+
+        setSummary( {
+          ...summary,
+          [ customInput ]: "",
+        } );
+
+      }
+
+    },
+    [ customInput ]
+  );
+
   return (
     <>
       <Button
@@ -21,14 +47,28 @@ const CustomInput = ( { setSummary } ) => {
         Add Custom Input
       </Button>
       { active && (
-        <TextField
-          id="customInput"
-          label="customInput"
-          onChange={ event =>
-            setCustomInput( event.target.value ) }
-          value={ customInput }
-          variant="outlined"
-        />
+        <>
+          <TextField
+            label="Property Name"
+            onChange={ event =>
+              setCustomInput( {
+                ...customInput,
+                name: event.target.value,
+              } ) }
+            value={ customInput.name }
+            variant="outlined"
+          />
+          <TextField
+            label="Property Value"
+            onChange={ event =>
+              setCustomInput( {
+                ...customInput,
+                value: event.target.value,
+              } ) }
+            value={ customInput.value }
+            variant="outlined"
+          />
+        </>
       ) }
     </>
   );

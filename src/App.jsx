@@ -5,7 +5,8 @@ import {
   createTheme, ThemeProvider,
 } from "@mui/material/styles";
 
-import Summary from "./components/Summary/Summary.jsx";
+import Experience from "./components/Experience";
+import Summary from "./components/Summary/Summary";
 
 const darkTheme = createTheme( { palette: { mode: "dark" } } );
 
@@ -15,7 +16,7 @@ const App = () =>
       theme={ darkTheme }>
       <CssBaseline />
       <Summary />
-      {/* <Experience /> */}
+      <Experience />
       {/* <Education /> */}
       {/* <Skills /> */}
       {/* <Interests /> */}
