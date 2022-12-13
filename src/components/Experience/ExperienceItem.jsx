@@ -1,64 +1,12 @@
 import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
-import { useEffect, useState } from "react";
-
-const Experience = () => {
-
-  // experience is an array of objects
-  const [
-    experience,
-    setExperience,
-  ] = useState( [] );
-  return (
-    <section
-      id="experience"
-    >
-      <h1>
-        Experience
-      </h1>
-      <List
-        dense
-      >
-        { experience.map( (
-          item, index
-        ) =>
-          (
-            <ExperienceItem
-              experience    = { experience }
-              index         = { index }
-              item          = { item }
-              key           = { index }
-              setExperience = { setExperience }
-            />
-          ) ) }
-      </List>
-      <Button
-        onClick={ () =>
-          setExperience( [
-            ...experience,
-            {
-              company : "Company",
-              end     : "End",
-              position: "Position",
-              start   : "Start",
-            },
-          ] ) }
-        variant="contained"
-      >
-        Add Experience
-      </Button>
-    </section>
-  );
-
-};
+import { useEffect, useState  } from "react";
 
 const ExperienceItem = ( {
   index,
@@ -161,4 +109,5 @@ const ExperienceItem = ( {
   );
 
 };
-export default Experience;
+
+export default ExperienceItem;

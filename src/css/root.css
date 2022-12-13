@@ -1,0 +1,28 @@
+#root {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+}
+
+section {
+  padding: 0 10em;
+
+  /* width: 60%; */
+}
+
+section > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+section > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
