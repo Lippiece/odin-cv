@@ -18,20 +18,23 @@ import { useState } from "react";
 
 import EducationItem from "./EducationItem";
 
-const Education = () => {
+const Education = ( {
+  education,
+  setEducation,
+}) => {
 
   const [
-    education,
-    setEducation,
-  ] = useState( [] );
+    submitted,
+    setSubmitted,
+  ] = useState( false );
 
   return (
     <section
       id="education"
     >
-      <h1>
+      <h2>
         Education
-      </h1>
+      </h2>
       <List
         dense
       >
@@ -49,6 +52,7 @@ const Education = () => {
           ) ) }
       </List>
       <Button
+        hidden={ submitted }
         onClick={ () =>
           setEducation( [
             ...education,
@@ -64,6 +68,14 @@ const Education = () => {
         variant="contained"
       >
         Add Education
+      </Button>
+      <Button
+        hidden={ submitted || education.length === 0}
+        onClick={ () =>
+          setSubmitted( true ) }
+        variant="contained"
+      >
+        Submit
       </Button>
     </section>
   );

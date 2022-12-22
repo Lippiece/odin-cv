@@ -55,21 +55,25 @@ const SkillsItem = ( { index,
         secondary = { skillsItem.description }
       />
       { edit && (
-        Object.keys( skillsItem )
-          .map( key =>
-            (
-              <TextField
-                key      = { key }
-                label    = { key }
-                onChange = { event =>
-                  setSkillsItem( {
-                    ...skillsItem,
-                    [ key ]: event.target.value,
-                  } )
-                }
-                value={ skillsItem[ key ] }
-              />
-            ) )
+        <form>
+          {
+            Object.keys( skillsItem )
+              .map( key =>
+                (
+                  <TextField
+                    key      = { key }
+                    label    = { key }
+                    onChange = { event =>
+                      setSkillsItem( {
+                        ...skillsItem,
+                        [ key ]: event.target.value,
+                      } )
+                    }
+                    value={ skillsItem[ key ] }
+                  />
+                ) )
+          }
+        </form>
       ) }
       <ListItemSecondaryAction>
         <IconButton

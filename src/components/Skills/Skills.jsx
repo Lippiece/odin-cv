@@ -4,18 +4,21 @@ import { useState } from "react";
 
 import SkillsItem from "./SkillsItem";
 
-const Skills = () => {
+const Skills = ( {
+  skills,
+  setSkills,
+}) => {
 
   const [
-    skills,
-    setSkills,
-  ] = useState( [] );
+    submitted,
+    setSubmitted,
+  ] = useState( false );
   return (
     <section
       id="skills">
-      <h1>
+      <h2>
         Skills
-      </h1>
+      </h2>
       <List
         dense>
         {skills.map( (
@@ -32,6 +35,7 @@ const Skills = () => {
           ) )}
       </List>
       <Button
+        hidden={submitted}
         onClick={() =>
           setSkills( [
             ...skills,
@@ -44,6 +48,15 @@ const Skills = () => {
         variant="contained"
       >
         Add Skill
+      </Button>
+      <Button
+        hidden={submitted || skills.length === 0}
+        onClick={() =>
+          setSubmitted( true )
+        }
+        variant="contained"
+      >
+        Submit
       </Button>
     </section>
   );

@@ -5,29 +5,24 @@ import { useState } from "react";
 
 import CustomInput from "./CustomInput";
 
-const Summary = () => {
+const Summary = ( {
+  summary,
+  setSummary,
+} ) => {
 
-  // initially, this is the form that has to be filled out
   const [
-    summary,
-    setSummary,
-  ] = useState( {
-    city    : "",
-    country : "",
-    email   : "",
-    github  : "",
-    linkedin: "",
-    name    : "",
-    summary : "",
-    website : "",
-  } );
+    submitted,
+    setSubmitted,
+  ] = useState( false );
   return (
     <section
       className="summary">
-      <h1>
+      <h2>
         Summary
-      </h1>
-      <form>
+      </h2>
+      <form
+        hidden={ submitted }
+      >
         {Object.keys( summary )
           .map( key =>
             (
@@ -44,18 +39,44 @@ const Summary = () => {
                 variant="outlined"
               />
             ) ) }
-        {/* <CustomInput
-          setSummary = { setSummary }
-          summary    = { summary }
-        /> */}
         <Button
+          hidden={ submitted || Object.values( summary )
+            .includes( "" ) }
           onClick={ () =>
-            console.log( summary ) }
-          variant="contained">
+            setSubmitted( true )}
+          variant="contained"
+        >
           Submit
         </Button>
-
       </form>
+      <div
+        hidden={ !submitted }
+      >
+        <p>
+          {summary.name}
+        </p>
+        <p>
+          {summary.city}
+        </p>
+        <p>
+          {summary.country}
+        </p>
+        <p>
+          {summary.email}
+        </p>
+        <p>
+          {summary.github}
+        </p>
+        <p>
+          {summary.linkedin}
+        </p>
+        <p>
+          {summary.summary}
+        </p>
+        <p>
+          {summary.website}
+        </p>
+      </div>
     </section>
   );
 

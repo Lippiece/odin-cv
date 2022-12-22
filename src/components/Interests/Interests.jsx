@@ -1,20 +1,26 @@
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import { useState } from "react";
+
 import InterestsItem from "./InterestsItem";
+
 // follow the same pattern as Skills and Experience
-const Interests = () => {
+const Interests = ( {
+  interests,
+  setInterests,
+} ) => {
+
   const [
-    interests,
-    setInterests,
-  ] = useState( [] );
+    submitted,
+    setSubmitted,
+  ] = useState( false );
   return (
     <section
       id="interests"
     >
-      <h1>
+      <h2>
         Interests
-      </h1>
+      </h2>
       <List
         dense
       >
@@ -24,14 +30,15 @@ const Interests = () => {
           (
             <InterestsItem
               index       = { index }
+              interests   = { interests }
               item        = { item }
               key         = { index }
               setInterests= { setInterests }
-              interests   = { interests }
             />
           ) ) }
       </List>
       <Button
+        hidden={ submitted }
         onClick={ () =>
           setInterests( [
             ...interests,
@@ -44,7 +51,16 @@ const Interests = () => {
       >
         Add Interest
       </Button>
+      <Button
+        hidden={ submitted || interests.length === 0 }
+        onClick={ () =>
+          setSubmitted( true ) }
+        variant="contained"
+      >
+        Submit
+      </Button>
     </section>
   );
+
 };
 export default Interests;

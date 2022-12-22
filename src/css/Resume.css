@@ -1,0 +1,46 @@
+h1,
+h2 {
+  width: 100%;
+
+  text-shadow: 0 0 0.1em #fff;
+}
+
+h1 {
+  /* add 0.5em margin to the bottom */
+  margin: -0.1em 0 0.5em;
+  padding: 0;
+  padding: 10px;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 2.5em;
+  text-align: center;
+  text-transform: uppercase;
+
+  background-image:
+    linear-gradient(
+      0deg,
+      #fff,
+      rgb(0 0 0 / 10%) 4%,
+      rgb(0 0 0 / 0%) 100%
+    );
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#resume {
+  width: 100%;
+
+  background-color: #222;
+  box-shadow: 0 0 0.2em #222;
+}

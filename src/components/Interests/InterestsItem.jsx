@@ -65,21 +65,25 @@ const InterestsItem = ( {
         secondary={ interestsItem.description }
       />
       { edit && (
-        Object.keys( interestsItem )
-          .map( key =>
-            (
-              <TextField
-                key={ key }
-                label={ key }
-                onChange={ event =>
-                  setInterestsItem( {
-                    ...interestsItem,
-                    [ key ]: event.target.value,
-                  } )
-                }
-                value={ interestsItem[ key ] }
-              />
-            ) )
+        <form>
+          {
+            Object.keys( interestsItem )
+              .map( key =>
+                (
+                  <TextField
+                    key={ key }
+                    label={ key }
+                    onChange={ event =>
+                      setInterestsItem( {
+                        ...interestsItem,
+                        [ key ]: event.target.value,
+                      } )
+                    }
+                    value={ interestsItem[ key ]
+                    } />
+                ) )
+          }
+        </form>
       ) }
       <ListItemSecondaryAction>
         <IconButton

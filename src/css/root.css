@@ -1,4 +1,8 @@
 #root {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
   text-align: center;
 }
 
@@ -10,19 +14,36 @@ form {
 }
 
 section {
-  padding: 0 10em;
+  width: 30%;
+  max-width: 45%;
+  margin: 0 auto;
+}
 
-  /* width: 60%; */
+@media screen and (max-width: 800px) {
+  section {
+    width: 50%;
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section {
+    width: 80%;
+  }
 }
 
 section > ul {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1em !important;
 }
 
 section > ul > li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+*[hidden] {
+  display: none !important;
 }

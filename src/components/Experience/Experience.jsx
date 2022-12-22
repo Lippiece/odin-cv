@@ -4,20 +4,23 @@ import { useState } from "react";
 
 import ExperienceItem from "./ExperienceItem";
 
-const Experience = () => {
+const Experience = ( {
+  experience,
+  setExperience,
+} ) => {
 
-  // experience is an array of objects
   const [
-    experience,
-    setExperience,
-  ] = useState( [] );
+    submitted,
+    setSubmitted,
+  ] = useState( false );
+
   return (
     <section
       id="experience"
     >
-      <h1>
+      <h2>
         Experience
-      </h1>
+      </h2>
       <List
         dense
       >
@@ -35,6 +38,7 @@ const Experience = () => {
           ) ) }
       </List>
       <Button
+        hidden={ submitted }
         onClick={ () =>
           setExperience( [
             ...experience,
@@ -48,6 +52,14 @@ const Experience = () => {
         variant="contained"
       >
         Add Experience
+      </Button>
+      <Button
+        hidden={ submitted || experience.length === 0 }
+        onClick={ () =>
+          setSubmitted( true ) }
+        variant="contained"
+      >
+        Submit
       </Button>
     </section>
   );
