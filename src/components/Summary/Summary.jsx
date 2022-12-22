@@ -1,9 +1,8 @@
-// import required modules from mui
+import "../../css/Summary.css";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-
-import CustomInput from "./CustomInput";
 
 const Summary = ( {
   summary,
@@ -30,6 +29,8 @@ const Summary = ( {
                 id={ key }
                 key={ key }
                 label={ key }
+                maxRows={Number.POSITIVE_INFINITY}
+                multiline
                 onChange={ event =>
                   setSummary( {
                     ...summary,
