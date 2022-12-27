@@ -34,6 +34,7 @@ const Experience = ( {
               item          = { item }
               key           = { index }
               setExperience = { setExperience }
+            submitted={ submitted }
             />
           ) ) }
       </List>

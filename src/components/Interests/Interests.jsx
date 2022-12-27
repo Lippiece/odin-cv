@@ -29,11 +29,12 @@ const Interests = ( {
         ) =>
           (
             <InterestsItem
-              index       = { index }
-              interests   = { interests }
-              item        = { item }
-              key         = { index }
-              setInterests= { setInterests }
+              index        = { index }
+              interests    = { interests }
+              item         = { item }
+              key          = { index }
+              setInterests = { setInterests }
+              submitted    = { submitted }
             />
           ) ) }
       </List>

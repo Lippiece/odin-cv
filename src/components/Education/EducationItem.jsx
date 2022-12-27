@@ -13,28 +13,17 @@ const EducationItem = ( {
   item,
   setEducation,
   education,
+  submitted,
 } ) => {
 
   const [
     educationItem,
     setEducationItem,
   ] = useState( item );
-
-  useEffect(
-    () => {
-
-      setEducation( [
-        ...education.slice(
-          0,
-          index
-        ),
-        educationItem,
-        ...education.slice( index + 1 ),
-      ] );
-
-    },
-    [ educationItem ]
-  );
+  const [
+    edit,
+    setEdit,
+  ] = useState( false );
 
   const handleDelete = () => {
 
@@ -54,22 +43,31 @@ const EducationItem = ( {
 
   };
 
-  const [
-    edit,
-    setEdit,
-  ] = useState( false );
+  useEffect(
+    () => {
+
+      setEducation( [
+        ...education.slice(
+          0,
+          index
+        ),
+        educationItem,
+        ...education.slice( index + 1 ),
+      ] );
+
+    },
+    [
+      education,
+      educationItem,
+      index,
+      setEducation,
+    ]
+  );
 
   return (
     <ListItem
       key={ index }>
       <ListItemText
-
-        /* degree       : "Degree",
-         description  : "Description",
-         endYear      : "End Year",
-         fieldOfStudy : "Field of Study",
-         school       : "School",
-         startYear    : "Start Year", */
         hidden={ edit }
         primary={ `${ item.school }: ${ item.startYear } - ${ item.endYear }` }
         secondary={ `${ item.degree } in ${ item.fieldOfStudy }. ${ item.description }` }
@@ -86,23 +84,24 @@ const EducationItem = ( {
                     setEducationItem( {
                       ...educationItem,
                       [ key ]: event.target.value,
-                    } ) }
+                    } )
+                  }
                   value={ educationItem[ key ] }
                 />
               ) )}
         </form>
       ) }
-      <ListItemSecondaryAction>
+      <ListItemSecondaryAction
+        hidden={ submitted }
+      >
         <IconButton
           onClick={ handleDelete }
-          variant="contained"
-        >
+          variant="contained">
           <DeleteIcon />
         </IconButton>
         <IconButton
           onClick={ handleEdit }
-          variant="contained"
-        >
+          variant="contained">
           { edit
             ? <CheckIcon />
             : <EditIcon /> }
@@ -112,5 +111,4 @@ const EducationItem = ( {
   );
 
 };
-
 export default EducationItem;

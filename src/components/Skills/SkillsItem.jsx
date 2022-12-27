@@ -11,7 +11,9 @@ import { useEffect, useState } from "react";
 const SkillsItem = ( { index,
   item,
   setSkills,
-  skills } ) => {
+  skills,
+  submitted,
+} ) => {
 
   const [
     edit,
@@ -75,7 +77,9 @@ const SkillsItem = ( { index,
           }
         </form>
       ) }
-      <ListItemSecondaryAction>
+      <ListItemSecondaryAction
+        hidden={ submitted }
+      >
         <IconButton
           edge    = "end"
           onClick = { handleDelete }

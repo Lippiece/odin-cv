@@ -13,6 +13,7 @@ const ExperienceItem = ( {
   item,
   setExperience,
   experience,
+  submitted
 } ) => {
 
   const [
@@ -88,7 +89,9 @@ const ExperienceItem = ( {
               ) ) }
         </form>
       ) }
-      <ListItemSecondaryAction>
+      <ListItemSecondaryAction
+        hidden={ submitted }
+      >
         <IconButton
           edge="end"
           onClick={ handleDelete }

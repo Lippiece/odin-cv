@@ -30,7 +30,8 @@ const Skills = ( {
               item      = {item}
               key       = {index}
               setSkills = {setSkills}
-              skills    = {skills}
+              skills    = { skills }
+              submitted = { submitted }
             />
           ) )}
       </List>

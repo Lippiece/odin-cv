@@ -14,42 +14,61 @@
 
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import EducationItem from "./EducationItem";
 
-const Education = ( {
-  education,
-  setEducation,
-}) => {
+const Education = ( { education, setEducation } ) => {
 
   const [
     submitted,
     setSubmitted,
   ] = useState( false );
 
+  const educationItems = useMemo(
+    () =>
+      education.map( (
+        item, index
+      ) =>
+      (
+        <EducationItem
+          education={ education }
+          index={ index }
+          item={ item }
+          key={ index }
+          setEducation={ setEducation }
+          submitted={ submitted }
+        />
+      ) ),
+    [
+      education,
+      setEducation,
+      submitted
+    ]
+  );
+
+  useEffect(
+    () => {
+
+      if ( education.length === 0 ) {
+
+        setSubmitted( false );
+
+      }
+
+    },
+    [ education ]
+  );
   return (
     <section
-      id="education"
-    >
+      id="education">
       <h2>
         Education
       </h2>
       <List
         dense
       >
-        { education.map( (
-          item, index
-        ) =>
-          (
-            <EducationItem
-              education    = { education }
-              index        = { index }
-              item         = { item }
-              key          = { index }
-              setEducation = { setEducation }
-            />
-          ) ) }
+        { educationItems }
       </List>
       <Button
         hidden={ submitted }
@@ -65,16 +84,14 @@ const Education = ( {
               startYear   : "Start Year",
             },
           ] ) }
-        variant="contained"
-      >
+        variant="contained">
         Add Education
       </Button>
       <Button
-        hidden={ submitted || education.length === 0}
+        hidden={ submitted || education.length === 0 }
         onClick={ () =>
           setSubmitted( true ) }
-        variant="contained"
-      >
+        variant="contained">
         Submit
       </Button>
     </section>

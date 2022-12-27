@@ -13,6 +13,7 @@ const InterestsItem = ( {
   item,
   setInterests,
   interests,
+  submitted,
 } ) => {
 
   const [
@@ -85,7 +86,9 @@ const InterestsItem = ( {
           }
         </form>
       ) }
-      <ListItemSecondaryAction>
+      <ListItemSecondaryAction
+        hidden={ submitted }
+      >
         <IconButton
           edge="end"
           onClick={ handleDelete }
